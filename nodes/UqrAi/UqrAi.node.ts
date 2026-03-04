@@ -10,7 +10,7 @@ export class UqrAi implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'uqr.ai',
 		name: 'uqrAi',
-		icon: 'file:uqr-ai.svg',
+		icon: 'file:logo.png',
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
