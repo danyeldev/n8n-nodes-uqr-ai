@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-uqr-ai",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "n8n community node for uqr.ai - Dynamic QR Code API",
   "keywords": [
     "n8n-community-node",
