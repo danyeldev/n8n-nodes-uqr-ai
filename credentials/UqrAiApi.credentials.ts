@@ -7,7 +7,7 @@ import type {
 export class UqrAiApi implements ICredentialType {
 	name = 'uqrAiApi';
 	displayName = 'uqr.ai API';
-	documentationUrl = 'https://uqr.ai/docs/api';
+	documentationUrl = 'https://uqr.ai/api-docs';
 
 	properties: INodeProperties[] = [
 		{

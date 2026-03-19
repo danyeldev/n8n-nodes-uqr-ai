@@ -7,8 +7,8 @@ This is an n8n community node for [uqr.ai](https://uqr.ai) - a dynamic QR code A
 
 ## Features
 
-- **Create QR Codes** - Generate static or dynamic QR codes with custom styling
-- **Update QR Codes** - Modify content of dynamic QR codes without changing the code itself
+- **Create QR Codes** - Generate QR codes for websites, text, email, vCard, WiFi, phone, SMS, location, PDF, images, files, links, galleries, and MP3
+- **Update QR Codes** - Modify content, name, domain, status, design, and more
 - **List QR Codes** - Get all your QR codes with pagination
 - **Get QR Code** - Retrieve details of a specific QR code
 - **Delete QR Codes** - Remove QR codes from your account
@@ -48,24 +48,52 @@ npm install n8n-nodes-uqr-ai
 ### Create a QR Code
 
 1. Add the **uqr.ai** node to your workflow
-2. Select **QR Code** resource
-3. Select **Create** operation
-4. Configure:
-   - **Content**: URL or text to encode
-   - **Name**: Optional name for the QR code
-   - **Dynamic**: Check for editable QR codes
-   - **Additional Fields**: Size, colors, error correction, logo
+2. Select **QR Code** resource → **Create** operation
+3. Choose the **QR Type** (Website, Text, Email, vCard, WiFi, etc.)
+4. Fill in the required fields for the chosen type
+5. Optionally configure:
+   - **Name**: Display name for the QR code
+   - **Short Link Domain**: Custom domain for short links (e.g. `uqr.sh`)
+   - **Options**: QR code design (colors, dot styles, logo, frame)
+   - **Folder ID**: Organize into folders
+   - **UTM Parameters**: Source, medium, campaign tracking
+
+### Supported QR Types
+
+| Type | Required Fields |
+|------|----------------|
+| Website (URL) | `url` |
+| Text | `text` |
+| Email | `email` (+ optional `subject`, `body`) |
+| vCard (Contact) | At least one of `first_name`, `last_name`, `phone` |
+| WiFi | `ssid` (+ optional `password`, `security`) |
+| Phone | `phone` |
+| SMS | `phone` (+ optional `message`) |
+| Location | `latitude`, `longitude` |
+| PDF | `pdf_title`, `pdf_download_url` |
+| Image Gallery | `image_gallery_title`, `image_gallery_images` (JSON) |
+| Image | `image_title`, `image_download_url` |
+| File | `file_title`, `file_download_url` |
+| List of Links | `links_title`, `links_list` (JSON) |
+| MP3 | `mp3_title`, `mp3_file_url` |
 
 ### Update a QR Code
 
 1. Select **QR Code** → **Update**
 2. Enter the **QR Code ID**
-3. Provide new **Content** or **Name**
+3. Configure update fields:
+   - **Name**: Change display name
+   - **URL** / **Text**: Update content
+   - **Short Link Domain**: Change the short link domain
+   - **Status**: Activate or deactivate
+   - **Options**: Update QR design
+   - **UTM Parameters**: Update tracking params
 
 ### Get QR Code Details
 
 1. Select **QR Code** → **Get**
 2. Enter the **QR Code ID**
+3. Response includes `short_url`, `short_link_domain`, `image`, and all QR data
 
 ### List All QR Codes
 
@@ -107,13 +135,13 @@ npm install n8n-nodes-uqr-ai
 
 For detailed API documentation, visit:
 
-- [uqr.ai API Docs](https://uqr.ai/docs/api)
+- [uqr.ai API Docs](https://uqr.ai/api-docs)
 
 ## Resources
 
 - [n8n Community Nodes Documentation](https://docs.n8n.io/integrations/community-nodes/)
 - [uqr.ai Website](https://uqr.ai)
-- [uqr.ai API Documentation](https://uqr.ai/docs/api)
+- [uqr.ai API Documentation](https://uqr.ai/api-docs)
 
 ## License
 
